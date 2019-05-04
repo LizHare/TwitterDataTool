@@ -10,3 +10,6 @@ That allows a users to get a sense of what words are used in conjunction with th
 This project is mostly for fun but could have potential interesting applications for content creators whose followers determine their income pretty closely and whose interests would be directly applicable.
 
 To build you will need to get your own twitter api key/secret and build your own info.plist
+
+The next step is almost certainly to have this connected to a streaming API and to get tweet information that way.
+
