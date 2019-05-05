@@ -22,6 +22,8 @@ class TwitterTweetViewController : UITableViewController {
     }
     
     override func viewDidLoad() {
+        
+        self.navigationController?.title = "Tweets with \(word)"
         dataSource = tweetData.tweets.filter{
             $0.lowercased().contains(word)
         }

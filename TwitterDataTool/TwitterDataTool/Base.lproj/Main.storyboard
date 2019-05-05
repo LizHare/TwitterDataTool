@@ -18,8 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2cv-6Z-YND">
+                                <rect key="frame" x="0.0" y="275" width="375" height="278"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xSW-II-CVF">
-                                <rect key="frame" x="16" y="44" width="343" height="128"/>
+                                <rect key="frame" x="16" y="139" width="343" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your terms seperated by spaces" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zi2-2m-Uso">
@@ -32,7 +36,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="awj-WH-afK">
                                         <rect key="frame" x="8" y="37" width="327" height="91"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -40,7 +44,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkq-7p-NcZ">
-                                <rect key="frame" x="100" y="575" width="174" height="30"/>
+                                <rect key="frame" x="100" y="561" width="174" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Relate Data">
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -49,52 +53,64 @@
                                     <action selector="getTweetData" destination="BYZ-38-t0r" eventType="touchUpInside" id="4WI-SI-Bqf"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2cv-6Z-YND">
-                                <rect key="frame" x="0.0" y="180" width="375" height="362"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.27384193132401929" green="0.27220215928016289" blue="0.2754817033678757" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="A6y-4t-Zfw"/>
                     <connections>
                         <outlet property="cloudContainer" destination="2cv-6Z-YND" id="gpS-FC-gQf"/>
                         <outlet property="relateDataButton" destination="nkq-7p-NcZ" id="aI2-H1-hdV"/>
                         <outlet property="textField" destination="awj-WH-afK" id="kX9-dm-GKk"/>
-                        <segue destination="EAp-TL-LON" kind="presentation" id="zAW-4p-XBa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="87.931034482758619"/>
+            <point key="canvasLocation" x="-734" y="92"/>
         </scene>
         <!--Twitter Tweet View Controller-->
-        <scene sceneID="NRD-7C-gGx">
+        <scene sceneID="ojw-Bb-ovS">
             <objects>
-                <tableViewController storyboardIdentifier="idTwitterTweetViewController" id="EAp-TL-LON" customClass="TwitterTweetViewController" customModule="TwitterDataTool" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2tV-bH-0E4">
+                <tableViewController storyboardIdentifier="idTwitterTweetViewController" id="jdh-ex-vdh" customClass="TwitterTweetViewController" customModule="TwitterDataTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8bp-OE-Xqm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="wAJ-ag-MEv">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="23I-do-qol">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wAJ-ag-MEv" id="fqF-Rc-MPG">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="23I-do-qol" id="z6o-Tl-G0v">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="EAp-TL-LON" id="une-7G-Jwb"/>
-                            <outlet property="delegate" destination="EAp-TL-LON" id="LHi-BC-2LZ"/>
+                            <outlet property="dataSource" destination="jdh-ex-vdh" id="rfN-Bm-od0"/>
+                            <outlet property="delegate" destination="jdh-ex-vdh" id="3ZJ-Yp-tbt"/>
                         </connections>
                     </tableView>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r3Y-tB-Rre" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iky-zE-g2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="92"/>
+            <point key="canvasLocation" x="-20" y="92"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9xY-ce-dAe">
+            <objects>
+                <navigationController id="5TB-tg-5Fz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bqn-gX-xwd">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2Gn-w1-cLG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0L0-kv-oH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1425" y="88"/>
         </scene>
         <!--Twitter Login View Controller-->
         <scene sceneID="hAB-O5-XSF">
@@ -107,12 +123,12 @@
                         <viewLayoutGuide key="safeArea" id="idm-GI-o76"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="transitionToMainScreen" action="showViewController:sender:" id="Ael-IO-xV3"/>
+                        <segue destination="5TB-tg-5Fz" kind="show" identifier="transitionToMainScreen" id="IFi-Go-KAt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yN8-Dl-hgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-823" y="88"/>
+            <point key="canvasLocation" x="-2113" y="88"/>
         </scene>
     </scenes>
 </document>
