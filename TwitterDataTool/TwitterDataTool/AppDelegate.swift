@@ -17,9 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         if let path = Bundle.main.path(forResource: "creds", ofType: "plist"),
-            let myDict = NSDictionary(contentsOfFile: path){
-            // Use your myDict here
-            TWTRTwitter.sharedInstance().start(withConsumerKey: myDict.value(forKey: "key") as! String, consumerSecret: myDict.value(forKey: "secret") as! String)
+            let credsDict = NSDictionary(contentsOfFile: path){
+            TWTRTwitter.sharedInstance().start(withConsumerKey: credsDict.value(forKey: "key") as! String, consumerSecret: credsDict.value(forKey: "secret") as! String)
         }
         // Override point for customization after application launch.
         return true
