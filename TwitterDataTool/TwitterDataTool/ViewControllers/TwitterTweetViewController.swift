@@ -27,6 +27,9 @@ class TwitterTweetViewController : UITableViewController {
         dataSource = tweetData.tweets.filter{
             $0.lowercased().contains(word)
         }
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 80
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,9 +41,9 @@ class TwitterTweetViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TweetTableViewCell
         
-        cell.textLabel?.text = dataSource[indexPath.row]
+        cell.tweetLabel?.text = dataSource[indexPath.row]
         
         return cell
     }

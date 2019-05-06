@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//TODO: Switch from TwitterKit to maintiain swift twitter API
 import TwitterKit
 import SafariServices
 import CloudTagView
@@ -26,8 +27,14 @@ class TwitterDataToolMainViewController: UIViewController {
     
     var cloudsToAdd:Int = 20
     
+    var isProcessing = false;
+    
     @IBAction func getTweetData()
     {
+        if(isProcessing)
+        {
+            return;
+        }
         if let s = textField?.text
         {
             let searchStrings:[String] = s.components(separatedBy: " ")
@@ -36,6 +43,8 @@ class TwitterDataToolMainViewController: UIViewController {
             tweetData.filterData.updateFilter(strings: searchStrings)
         }
         
+        
+        //TODO: Self is captured here -> should only be maintaining a weak reference to self here to avoid memory leaks.
         if let session = TWTRTwitter.sharedInstance().sessionStore.session()
         {
             followersArray = [];
@@ -43,9 +52,11 @@ class TwitterDataToolMainViewController: UIViewController {
             self.cloudView.tags.removeAll();
             
             let currentUser:String = session.userID;
+            isProcessing = true;
             twitterHelper.getFriendsOfCurrentUser(currentUser:currentUser) { (response, data, connectionError) -> Void in
                 if connectionError != nil {
                     print("Error: \(String(describing: connectionError))")
+                    self.isProcessing = false;
                     return;
                 }
                 
@@ -72,19 +83,25 @@ class TwitterDataToolMainViewController: UIViewController {
     
     //Psuedo recursive
     func populateTweets (){
+        /*
+            With TwitterKit the completeion block is dispatched on the mainThread so UI updates are fine in the completeion block.
+         
+            TODO: Self is captured here -> should only be maintaining a weak reference to self here to avoid memory leaks.
+        */
         self.twitterHelper.populateTweetsFromUser(userId: self.followersArray[self.opperationsCount]) { (response, data, connectionError) -> Void in
             if connectionError != nil {
                 print("Error: \(String(describing: connectionError))")
             }
             
             if data == nil {
-                print("401 error");
                 if(self.opperationsCount > 0) {
                     self.opperationsCount -= 1;
                     self.addClouds(self.cloudsToAdd);
                     
                     sleep(1)
                     self.populateTweets();
+                } else {
+                    self.isProcessing = false;
                 }
                 return;
             }
@@ -111,6 +128,7 @@ class TwitterDataToolMainViewController: UIViewController {
                 
             }
             else{
+                self.isProcessing = false;
                 self.addClouds(self.cloudsToAdd);
             }
         }
@@ -150,6 +168,13 @@ class TwitterDataToolMainViewController: UIViewController {
     //Function for handling adding user interaction to the cloud views we add.
     @objc func handleTap(sender: UITapGestureRecognizer? = nil) {
         // handling code
+        if(isProcessing)
+        {
+            return;
+        }
+        
+        //This is a little funky -> but gives functionality across all of the tag views.
+        //TODO -> Remove this when we switch technilogies for tags.
         for v in cloudView.subviews {
             let containsPoint = v.bounds.contains((sender?.location(in: v))!)
             if (containsPoint)
